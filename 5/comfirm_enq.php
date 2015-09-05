@@ -42,11 +42,11 @@ echo $hobby;
 ?>
 <br><br>
 <form action="show_enq.php" method="POST">
-    <input type="hidden" name="name" value="<$php echo $name; ?>">
-    <input type="hidden" name="mail" value="<$php echo $mail; ?>">
-    <input type="hidden" name="age" value="<$php echo $age; ?>">
-    <input type="hidden" name="sex" value="<$php echo $sex; ?>">
-    <input type="hidden" name="hobby" value="<$php echo $hobby; ?>">
+    <input type="hidden" name="name" value="<?php echo $name; ?>">
+    <input type="hidden" name="mail" value="<?php echo $mail; ?>">
+    <input type="hidden" name="age" value="<?php echo $age; ?>">
+    <input type="hidden" name="sex" value="<?php echo $sex; ?>">
+    <input type="hidden" name="hobby" value="<?php echo $hobby; ?>">
     <input type="submit" value="送信">
 </form>
 </body>

@@ -13,7 +13,11 @@ $hobby=htmlspecialchars($_POST["hobby"],ENT_QUOTES);
 var_dump($name);
 $array=array($name,$mail,$age,$sex,$hobby);
 
-$handle=fopen('data.csv','a');
+array_walk_recursive($array,function (&$value){
+    $value = mb_convert_encoding($value,'SJIS','UTF-8');
+});
+
+$handle=fopen('data.csv','w');
 
 flock($handle,LOCK_EX);
 
