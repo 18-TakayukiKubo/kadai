@@ -28,8 +28,8 @@
         </h2>
         <article class="news-detail">
             <dl class="clearfix">
-                <dd class="news-title">ニュースタイトル</dd>
-                <dd>ニュース詳細：あいうえおかきくけこさしすせそたちつてと</dd>
+                <dd class="news-title">ニュースタイトル:<?php echo $_GET["news_title"]?></dd>
+                <dd>ニュース詳細：<?php echo $_GET["news_detail"]?></dd>
             </dl>
             
         </article>

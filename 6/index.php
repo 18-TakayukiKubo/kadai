@@ -21,17 +21,24 @@
         <h2 class="section-title text-center">
             <span class="section-title__yellow">News</span><span class="section-title-ja text-center">お知らせ・更新情報</span>
         </h2>
-        <article class="news-detail">
+           <article class="news-detail">
+            <?php $pdo = new PDO("mysql:host=localhost;dbname=cs_academy;charset=utf8", "root", "");
+                $sql = "SELECT * FROM news ORDER BY news_id DESC LIMIT 5";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute();
+                $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $pdo= null;
+foreach($results as $post)
+                { ?>
             <dl class="clearfix">
-                <dt class="news-date">2015.07.12</dt>
-                <dd class="news-description">初日開講しました！</dd>
-                <dt class="news-date">2015.06.12</dt>
-                <dd class="news-description">初めてのチーズハッカソンを開催しました！</dd>
-                <dt class="news-date">2015.04.11</dt>
-                <dd class="news-description">トーキョーチーズFesを開催いたしました！</dd>
+                <dt class="news-date"><?php $date = $post['create_date'];
+                    echo date('Y.m.d',strtotime($date))?></dt>
+                <dd class="news-description"><a href="news.php?news_title=<?php $post['news_title']?>&news_detail=<?php $post['news_detail']?>"><?php echo $post['news_title'] ?></a></dd>
             </dl>
+                    <?php } ?>
             <p class="view-detail text-right"><a href="#">ニュース一覧を見る</a></p>
         </article>
+
     </section>
    
     <section class="feature contents-box">
