@@ -134,6 +134,10 @@ block-module
 .footer{
     background: rgb(123, 122, 122) ;
 }
+.news-title{
+    font-size: 20px;
+    text-decoration: underline;
+}
 
 
 /*---------------------

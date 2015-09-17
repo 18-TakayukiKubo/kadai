@@ -1,13 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-    <meta charset="UTF-8">
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
+<?php
+$news_id=$_GET["id"];
+$news_title;
+$news_detail;
+$pdo = new PDO("mysql:host=localhost;dbname=cs_academy;charset=utf8", "root", "");
+$sql = "SELECT * FROM news WHERE news_id = $news_id";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//var_dump($results);
+foreach($results as $row){
+//var_dump($row);
+$news_title = $row["news_title"];
+$news_detail = $row["news_detail"];
+}
+$pdo= null;
+?>
+<?php include("header.php");?>
 <body>
     <header class="header">
         <div class="inner clearfix">
@@ -27,11 +35,11 @@
             <span class="section-title-ja text-center">日付</span>
         </h2>
         <article class="news-detail">
+           
             <dl class="clearfix">
-                <dd class="news-title">ニュースタイトル:<?php echo $_GET["news_title"]?></dd>
-                <dd>ニュース詳細：<?php echo $_GET["news_detail"]?></dd>
+                <dd class="news-title"><?php echo $news_title?></dd>
+                <dd><?php echo $news_detail?></dd>
             </dl>
-            
         </article>
     </section>
 
